@@ -21,17 +21,17 @@
   --wood:#3A2318; --wood-2:#2E1B12; --fretwire:#A7A9A6; --nut:#E9E2D2; --string:#CFC7B6;
   --root:#F0A830; --scale:#EDE6D6; --char:#7FC4D9; --dot-ink:#22160F; --ghost:#9C8877;
   --good:#2F7D4F; --bad:#B23A3A; --mute:#2F7FA0; --accent-mid:#D08A2E;
-  --t-menu:#4B5D52; --t-scale:#B4691A; --t-phrase:#C2410C; --t-chord:#0F766E; --t-caged:#2F7D4F; --t-rhythm:#6D3FC4; --t-ear:#B8326B; --t-quiz:#8A6A00; --t-theory:#2557B8;
+  --t-menu:#4B5D52; --t-scale:#B4691A; --t-phrase:#C2410C; --t-chord:#0F766E; --t-caged:#2F7D4F; --t-rhythm:#6D3FC4; --t-ear:#B8326B; --t-quiz:#8A6A00; --t-theory:#2557B8; --t-metro:#B42318;
   --f-display:"Dela Gothic One","Hiragino Kaku Gothic StdN",system-ui,sans-serif;
   --f-body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#14171A; --surface:#1C2024; --ink:#E5E7E2; --muted:#9AA2AA; --line:#2D3338;
-  --accent:#F0A830; --accent-soft:#3A2E1C; --chip:#262B30; --good:#5FBF86; --bad:#E07070; --mute:#7FC4D9; --accent-mid:#B07A2C; --t-menu:#9FB8A8; --t-scale:#F0A830; --t-phrase:#FB8B55; --t-chord:#3CC4B3; --t-caged:#6FCF8F; --t-rhythm:#B49BF5; --t-ear:#F07FAF; --t-quiz:#E8C547; --t-theory:#7FA8F5; color-scheme:dark}}
+  --accent:#F0A830; --accent-soft:#3A2E1C; --chip:#262B30; --good:#5FBF86; --bad:#E07070; --mute:#7FC4D9; --accent-mid:#B07A2C; --t-menu:#9FB8A8; --t-scale:#F0A830; --t-phrase:#FB8B55; --t-chord:#3CC4B3; --t-caged:#6FCF8F; --t-rhythm:#B49BF5; --t-ear:#F07FAF; --t-quiz:#E8C547; --t-theory:#7FA8F5; --t-metro:#FF8A7A; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#14171A; --surface:#1C2024; --ink:#E5E7E2; --muted:#9AA2AA; --line:#2D3338;
-  --accent:#F0A830; --accent-soft:#3A2E1C; --chip:#262B30; --good:#5FBF86; --bad:#E07070; --mute:#7FC4D9; --accent-mid:#B07A2C; --t-menu:#9FB8A8; --t-scale:#F0A830; --t-phrase:#FB8B55; --t-chord:#3CC4B3; --t-caged:#6FCF8F; --t-rhythm:#B49BF5; --t-ear:#F07FAF; --t-quiz:#E8C547; --t-theory:#7FA8F5; color-scheme:dark}
+  --accent:#F0A830; --accent-soft:#3A2E1C; --chip:#262B30; --good:#5FBF86; --bad:#E07070; --mute:#7FC4D9; --accent-mid:#B07A2C; --t-menu:#9FB8A8; --t-scale:#F0A830; --t-phrase:#FB8B55; --t-chord:#3CC4B3; --t-caged:#6FCF8F; --t-rhythm:#B49BF5; --t-ear:#F07FAF; --t-quiz:#E8C547; --t-theory:#7FA8F5; --t-metro:#FF8A7A; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65}
 .wrap{max-width:1240px;margin:0 auto;padding-inline:16px;padding-block:20px 48px;display:flex;flex-direction:column;gap:18px}
@@ -68,14 +68,17 @@ input[type=range]{accent-color:var(--accent);width:130px}
 @keyframes pop{from{r:20;opacity:.2}to{r:15;opacity:1}}
 
 nav.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-@media (min-width:1000px){nav.tabs{grid-template-columns:repeat(9,minmax(0,1fr))}}
+@media (min-width:560px){nav.tabs{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media (max-width:559px){nav.tabs{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}}
+@media (min-width:1000px){nav.tabs{grid-template-columns:repeat(10,minmax(0,1fr))}}
 nav.tabs button{display:flex;align-items:center;gap:8px;min-height:48px;padding:6px 10px 6px 6px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-weight:700;font-size:.92rem;text-align:left;transition:background .15s,border-color .15s,transform .1s}
 nav.tabs button:hover{border-color:var(--tc)}
 nav.tabs button:active{transform:scale(.98)}
 nav.tabs .ti{flex:0 0 34px;height:34px;border-radius:8px;display:grid;place-items:center;color:var(--tc);background:color-mix(in srgb,var(--tc) 14%,transparent)}
 nav.tabs .ti svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 nav.tabs .tl{line-height:1.25}
-@media (max-width:559px),(min-width:1000px){nav.tabs button{flex-direction:column;justify-content:center;text-align:center;gap:5px;padding:8px 4px;min-height:76px;font-size:.84rem}}
+@media (max-width:559px),(min-width:1000px){nav.tabs button{flex-direction:column;justify-content:center;text-align:center;gap:5px;padding:8px 4px;min-height:76px;font-size:.8rem}}
+@media (max-width:559px){nav.tabs button{font-size:.68rem;min-height:70px;padding:6px 2px}nav.tabs .ti{flex-basis:30px;height:30px}}
 nav.tabs button[aria-selected="true"]{background:var(--tc);border-color:var(--tc);color:#fff}
 nav.tabs button[aria-selected="true"] .ti{background:rgba(255,255,255,.2);color:#fff}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) nav.tabs button[aria-selected="true"]{color:#14171A} :root:not([data-theme="light"]) nav.tabs button[aria-selected="true"] .ti{color:#14171A;background:rgba(0,0,0,.14)}}
@@ -224,6 +227,31 @@ td.wrap{white-space:normal;min-width:180px}
 .tuner button{display:flex;flex-direction:column;align-items:center;min-height:60px}
 .tuner b{font-size:1.3rem}
 .tuner small{font-weight:400;color:var(--muted)}
+.tempo{display:inline-flex;align-items:center;gap:4px;flex-wrap:wrap}
+.tempo .tslider{width:150px}
+.tempo .tnum,.tnum2{width:4.6em;min-height:32px;border:1px solid var(--line);border-radius:6px;background:var(--bg);padding:2px 6px;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.tbtn{border:1px solid var(--line);background:var(--bg);border-radius:6px;min-height:32px;min-width:34px;padding:0 6px;cursor:pointer;font-family:var(--f-mono);font-size:.8rem}
+.metrohead{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin:6px 0 10px}
+.bigbpm{display:flex;flex-direction:column}
+.bigbpm span{font-family:var(--f-display);font-size:3.2rem;line-height:1;color:var(--t-metro);font-variant-numeric:tabular-nums}
+.bigbpm small{color:var(--muted);font-size:.75rem}
+.mbeats{display:flex;gap:10px;flex-wrap:wrap}
+.mbeat{width:26px;height:26px;border-radius:50%;background:var(--chip);border:2px solid var(--line);transition:transform .06s}
+.mbeat.acc{border-color:var(--t-metro)}
+.mbeat.now{background:var(--t-metro);border-color:var(--t-metro);transform:scale(1.15)}
+.mrowctl{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end;margin-top:12px}
+.dgrid{display:grid;grid-template-columns:86px repeat(var(--steps),minmax(22px,1fr));gap:3px;min-width:max-content;margin-top:12px}
+.dlabel{font-size:.75rem;color:var(--muted);display:flex;align-items:center;white-space:nowrap}
+.dhead{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-align:center;border-radius:4px;padding:2px 0}
+.dhead.now{background:var(--t-metro);color:#fff}
+.dcell{height:26px;border-radius:5px;border:1px solid var(--line);background:var(--bg);cursor:pointer;padding:0}
+.dcell.beat{border-left:2px solid var(--muted)}
+.dcell.v1{background:color-mix(in srgb,var(--t-metro) 28%,var(--bg))}
+.dcell.v2{background:color-mix(in srgb,var(--t-metro) 62%,var(--bg))}
+.dcell.v3{background:var(--t-metro)}
+.dmini{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:var(--surface);border:2px solid var(--t-metro);border-radius:12px;padding:8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.25);max-width:calc(100% - 32px)}
+.dmini[hidden]{display:none}
+#dgenre button[aria-pressed="true"]{background:var(--t-metro);border-color:var(--t-metro)}
 .refs{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
 .refs a{color:var(--accent)}
 .note-pos{font-size:.8rem;color:var(--muted);margin-top:6px}
@@ -279,9 +307,9 @@ details > div{padding:0 0 14px;display:flex;flex-direction:column;gap:8px;max-wi
         <output id="rangeOut">5〜9F</output>
       </div>
     </div>
-    <div class="ctl"><span>テンポ（♩=BPM・8分音符で再生）</span>
-      <div class="range-row"><input type="range" id="tempo" min="40" max="200" value="90"><output id="tempoOut">90</output>
-        <label class="check" style="min-height:0;margin-left:8px"><input type="checkbox" id="loop"> ループ</label></div>
+    <div class="ctl"><span>テンポ（♩=BPM・全タブ共通）</span>
+      <div class="range-row" style="flex-wrap:wrap"><div id="toptempo"></div>
+        <label class="check" style="min-height:0;margin-left:4px"><input type="checkbox" id="loop"> ループ</label></div>
     </div>
   </section>
 
@@ -305,6 +333,7 @@ details > div{padding:0 0 14px;display:flex;flex-direction:column;gap:8px;max-wi
     <button role="tab" data-tab="chords" aria-selected="false" style="--tc:var(--t-chord)"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M4 8h16M4 13h16M9.3 3v18M14.6 3v18"/><circle cx="9.3" cy="10.5" r="1.7" fill="currentColor"/><circle cx="14.6" cy="15.5" r="1.7" fill="currentColor"/></svg></span><span class="tl">コード</span></button>
     <button role="tab" data-tab="caged" aria-selected="false" style="--tc:var(--t-caged)"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span><span class="tl">CAGED</span></button>
     <button role="tab" data-tab="rhythm" aria-selected="false" style="--tc:var(--t-rhythm)"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 21h9L13.5 3h-3L7.5 21z"/><path d="M12 16l5.5-9"/><path d="M8.5 15h7"/></svg></span><span class="tl">リズム</span></button>
+    <button role="tab" data-tab="metro" aria-selected="false" style="--tc:var(--t-metro)"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="9" rx="8" ry="3"/><path d="M4 9v6c0 1.7 3.6 3 8 3s8-1.3 8-3V9"/><path d="M3 3l6 5M21 3l-6 5"/></svg></span><span class="tl">メトロ＆ドラム</span></button>
     <button role="tab" data-tab="ear" aria-selected="false" style="--tc:var(--t-ear)"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15v-3a8 8 0 0116 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/></svg></span><span class="tl">耳トレ</span></button>
     <button role="tab" data-tab="quiz" aria-selected="false" style="--tc:var(--t-quiz)"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></span><span class="tl">指板クイズ</span></button>
     <button role="tab" data-tab="theory" aria-selected="false" style="--tc:var(--t-theory)"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19a2 2 0 002 2h13"/><path d="M8 7h7M8 11h7"/></svg></span><span class="tl">音楽理論</span></button>
@@ -317,9 +346,11 @@ details > div{padding:0 0 14px;display:flex;flex-direction:column;gap:8px;max-wi
   <section class="panel" id="panel-caged" hidden></section>
   <section class="panel" id="panel-rhythm" hidden></section>
   <section class="panel" id="panel-theory" hidden></section>
+  <section class="panel" id="panel-metro" hidden></section>
   <section class="panel" id="panel-ear" hidden></section>
   <section class="panel" id="panel-quiz" hidden></section>
 </div>
+<div id="dmini" class="dmini" hidden><span class="small">♪ <b id="dminimode"></b>・<b class="bpmtxt"></b> BPM・<span id="dminibar"></span></span><span class="btns"><button type="button" class="tbtn" data-d="-5">−5</button><button type="button" class="tbtn" data-d="5">+5</button><button type="button" class="btn small" id="dministop">■ 停止</button></span></div>
 <script>
 // ===== 音楽理論コア（DOM非依存） =====
 const LETTERS = ['C','D','E','F','G','A','B'];
@@ -1834,13 +1865,12 @@ function setupControls(){
   });
   rs.value = state.root; ss.value = state.scale;
   $('#showAll').checked = state.showAll; $('#rangeOn').checked = state.rangeOn;
-  $('#rangeStart').value = state.rangeStart; $('#tempo').value = state.tempo; $('#loop').checked = state.loop;
+  $('#rangeStart').value = state.rangeStart; $('#loop').checked = state.loop;
   rs.addEventListener('change', () => { state.root = +rs.value; update(); });
   ss.addEventListener('change', () => { state.scale = ss.value; update(); });
   $('#showAll').addEventListener('change', e => { state.showAll = e.target.checked; save(); renderBoard(); });
   $('#rangeOn').addEventListener('change', e => { state.rangeOn = e.target.checked; update(); });
   $('#rangeStart').addEventListener('input', e => { state.rangeStart = +e.target.value; if (!state.rangeOn) { state.rangeOn = true; $('#rangeOn').checked = true; } update(); });
-  $('#tempo').addEventListener('input', e => { state.tempo = +e.target.value; $('#tempoOut').textContent = state.tempo; save(); });
   $('#loop').addEventListener('change', e => { state.loop = e.target.checked; save(); });
   document.querySelectorAll('#labelSeg button').forEach(b => b.addEventListener('click', () => { state.label = b.dataset.v; save(); syncSeg(); renderBoard(); }));
   document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => { state.tab = b.dataset.tab; save(); syncTabs(); }));
@@ -1848,14 +1878,14 @@ function setupControls(){
 function syncSeg(){ document.querySelectorAll('#labelSeg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === state.label)); }
 function syncTabs(){
   document.querySelectorAll('nav.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === state.tab));
-  ['menu','practice','phrases','chords','caged','rhythm','ear','quiz','theory'].forEach(t => $('#panel-'+t).hidden = t !== state.tab);
+  ['menu','practice','phrases','chords','caged','rhythm','metro','ear','quiz','theory'].forEach(t => $('#panel-'+t).hidden = t !== state.tab);
+  if (typeof dSync === 'function') dSync();
   if (state.tab === 'menu' && typeof renderMenu === 'function') renderMenu();
   if (state.tab !== 'rhythm' && typeof rStop === 'function' && RP.on) rStop();
 }
 function update(){
   stopAll(); save(); refreshTheory();
   $('#rangeOut').textContent = `${state.rangeStart}〜${state.rangeStart+4}F`;
-  $('#tempoOut').textContent = state.tempo;
   renderBoard(); renderPractice(); renderPhrases(); renderChords(); renderCaged(); renderTheory(); if (state.tab === 'ear') renderEar();
 }
 
@@ -2237,15 +2267,13 @@ function renderRhythm(){
   const top = document.createElement('div'); top.className = 'card rtop';
   top.innerHTML = `<div class="seg rsub" role="group" aria-label="リズムの項目">${subs.map(([k,l]) => `<button data-v="${k}" aria-pressed="${RH.sub===k}">${l}</button>`).join('')}</div>
     <div class="rctl">
-      <div class="range-row"><span class="small muted">テンポ ♩=</span><input type="range" id="rbpm" min="40" max="200" value="${RH.bpm}" aria-label="テンポ"><output id="rbpmo">${RH.bpm}</output></div>
+      <div class="range-row"><span class="small muted">テンポ ♩=</span>${tempoWidget()}</div>
       <label class="check small"><input type="checkbox" id="rclick" ${RH.click?'checked':''}> メトロノーム</label>
       <label class="check small"><input type="checkbox" id="rguide" ${RH.guide?'checked':''}> お手本のギター音</label>
       <label class="check small">コード <select id="rchord">${Object.keys(CHORDS).map(k => `<option ${RH.chord===k?'selected':''}>${k}</option>`).join('')}</select></label>
     </div>`;
   p.appendChild(top);
   top.querySelectorAll('.rsub button').forEach(b => b.addEventListener('click', () => { RH.sub = b.dataset.v; saveRH(); renderRhythm(); }));
-  $('#rbpm').addEventListener('input', e => { RH.bpm = +e.target.value; $('#rbpmo').textContent = RH.bpm; saveRH(); });
-  $('#rbpm').addEventListener('change', () => { if (RP.on) rStop(); });
   $('#rclick').addEventListener('change', e => { RH.click = e.target.checked; saveRH(); });
   $('#rguide').addEventListener('change', e => { RH.guide = e.target.checked; saveRH(); });
   $('#rchord').addEventListener('change', e => { RH.chord = e.target.value; saveRH(); });
@@ -2914,6 +2942,318 @@ function toggleTimer(it){
   }, 1000);
   renderMenu();
 }
+// ===== テンポ（全体共通） =====
+const BPM_MIN = 30, BPM_MAX = 400;
+function tempoWidget(label){
+  return `<div class="tempo" role="group" aria-label="${label || 'テンポ'}">
+    <button type="button" class="tbtn" data-d="-5" aria-label="5下げる">−5</button>
+    <button type="button" class="tbtn" data-d="-1" aria-label="1下げる">−1</button>
+    <input type="range" class="tslider" min="${BPM_MIN}" max="${BPM_MAX}" value="${state.tempo}" aria-label="テンポ（BPM）">
+    <input type="number" class="tnum" min="${BPM_MIN}" max="${BPM_MAX}" value="${state.tempo}" aria-label="テンポの数値（BPM）">
+    <button type="button" class="tbtn" data-d="1" aria-label="1上げる">+1</button>
+    <button type="button" class="tbtn" data-d="5" aria-label="5上げる">+5</button>
+  </div>`;
+}
+function setBPM(v, from){
+  v = Math.round(+v); if (!isFinite(v)) return;
+  v = Math.max(BPM_MIN, Math.min(BPM_MAX, v));
+  state.tempo = v; if (typeof RH !== 'undefined') RH.bpm = v;
+  document.querySelectorAll('.tslider').forEach(s => { if (s !== from) s.value = v; });
+  document.querySelectorAll('.tnum').forEach(s => { if (s !== from) s.value = v; });
+  document.querySelectorAll('.bpmtxt').forEach(s => s.textContent = v);
+  save(); if (typeof saveRH === 'function') saveRH();
+}
+document.addEventListener('input', e => {
+  if (e.target.classList && e.target.classList.contains('tslider')) setBPM(e.target.value, e.target);
+});
+document.addEventListener('change', e => {
+  if (e.target.classList && e.target.classList.contains('tnum')) setBPM(e.target.value, null);
+});
+document.addEventListener('click', e => {
+  const b = e.target.closest && e.target.closest('.tbtn'); if (b) setBPM(state.tempo + (+b.dataset.d), null);
+});
+
+// ===== ドラム音源（Web Audioで合成） =====
+let noiseBuf = null;
+function getNoise(){
+  if (noiseBuf) return noiseBuf;
+  const sr = audio.ctx.sampleRate, b = audio.ctx.createBuffer(1, sr * 1.5, sr), d = b.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  return noiseBuf = b;
+}
+let drumBus = null;
+function bus(){
+  if (drumBus) return drumBus;
+  drumBus = audio.ctx.createGain(); drumBus.gain.value = DR.vol;
+  drumBus.connect(audio.ctx.destination);
+  return drumBus;
+}
+function env(g, t, peak, dur, attack = 0.002){
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(Math.max(0.0002, peak), t + attack);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+}
+function noiseHit(t, { hp = 0, bp = 0, q = 1, peak = 0.5, dur = 0.1 }){
+  const ctx = audio.ctx, src = ctx.createBufferSource(); src.buffer = getNoise();
+  let node = src;
+  if (hp) { const f = ctx.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = hp; node.connect(f); node = f; }
+  if (bp) { const f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = bp; f.Q.value = q; node.connect(f); node = f; }
+  const g = ctx.createGain(); env(g, t, peak, dur); node.connect(g); g.connect(bus());
+  src.start(t, Math.random() * 0.5); src.stop(t + dur + 0.05);
+}
+function toneHit(t, { type = 'sine', f0 = 150, f1 = 50, sweep = 0.1, peak = 0.8, dur = 0.3 }){
+  const ctx = audio.ctx, o = ctx.createOscillator(), g = ctx.createGain();
+  o.type = type; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + sweep);
+  env(g, t, peak, dur); o.connect(g); g.connect(bus()); o.start(t); o.stop(t + dur + 0.05);
+}
+function metalHit(t, { peak = 0.25, dur = 0.5, hp = 7000 }){
+  const ctx = audio.ctx, g = ctx.createGain(), f = ctx.createBiquadFilter();
+  f.type = 'highpass'; f.frequency.value = hp; env(g, t, peak, dur); f.connect(g); g.connect(bus());
+  [263, 400, 421, 474, 587, 845].forEach(fr => { const o = ctx.createOscillator(); o.type = 'square'; o.frequency.value = fr * 1.7; const og = ctx.createGain(); og.gain.value = 0.18; o.connect(og); og.connect(f); o.start(t); o.stop(t + dur + 0.05); });
+}
+const KIT = {
+  kick:  (t, v) => { toneHit(t, { f0:150, f1:42, sweep:0.12, peak:1.0*v, dur:0.38 }); noiseHit(t, { hp:2500, peak:0.06*v, dur:0.012 }); },
+  snare: (t, v) => { noiseHit(t, { hp:1200, peak:0.55*v, dur:0.18 }); toneHit(t, { type:'triangle', f0:200, f1:160, sweep:0.05, peak:0.35*v, dur:0.09 }); },
+  rim:   (t, v) => { noiseHit(t, { bp:1800, q:3, peak:0.5*v, dur:0.04 }); toneHit(t, { type:'square', f0:480, f1:420, sweep:0.02, peak:0.18*v, dur:0.04 }); },
+  hat:   (t, v) => { noiseHit(t, { hp:7500, peak:0.28*v, dur:0.045 }); },
+  ohat:  (t, v) => { noiseHit(t, { hp:6500, peak:0.24*v, dur:0.32 }); },
+  phat:  (t, v) => { noiseHit(t, { hp:5500, bp:8000, q:0.8, peak:0.2*v, dur:0.05 }); },
+  ride:  (t, v) => { metalHit(t, { peak:0.16*v, dur:0.55, hp:5000 }); noiseHit(t, { hp:9000, peak:0.05*v, dur:0.2 }); },
+  crash: (t, v) => { noiseHit(t, { hp:3500, peak:0.35*v, dur:1.3 }); metalHit(t, { peak:0.1*v, dur:1.0, hp:4000 }); },
+  tom:   (t, v) => { toneHit(t, { f0:180, f1:110, sweep:0.15, peak:0.7*v, dur:0.3 }); },
+  click: (t, v) => { const ctx = audio.ctx, o = ctx.createOscillator(), g = ctx.createGain(); o.frequency.value = v >= 1 ? 1900 : v >= 0.7 ? 1400 : 1000; env(g, t, 0.5 * Math.min(1, v + 0.2), 0.05, 0.001); o.connect(g); g.connect(bus()); o.start(t); o.stop(t + 0.07); }
+};
+const INST = [['crash','クラッシュ'],['ride','ライド'],['ohat','オープンHH'],['hat','クローズHH'],['phat','ペダルHH'],['snare','スネア'],['rim','リム'],['tom','タム'],['kick','キック']];
+
+// パターン：X=強, x=普通, g=小さく（ゴースト）, .=休み。sp=1拍の分割数
+const GENRES = [
+  { id:'rock8', name:'8ビート（ロック）', bpm:[100,140], beats:4, sp:4,
+    p:{ hat:'x.x.x.x.x.x.x.x.', snare:'....X.......X...', kick:'X.......x.x.....' },
+    tip:'ロック・ポップスの基本。ハイハットは8分音符、2・4拍目にスネア。ギターは8ビートのストロークやパワーコードと相性が良いです。' },
+  { id:'pop16', name:'16ビート（ポップス）', bpm:[85,115], beats:4, sp:4,
+    p:{ hat:'XgxgXgxgXgxgXgxg', snare:'....X.......X...', kick:'X.....x...x...x.' },
+    tip:'ハイハットを16分音符で刻む、細かいノリのビート。16ビートのストローク（リズムタブ）の練習に。' },
+  { id:'funk', name:'ファンク', bpm:[90,110], beats:4, sp:4,
+    p:{ hat:'x.x.x.x.x.x.x.x.', snare:'..g.X..g.g..X..g', kick:'X..x..x...x..x..', ohat:'..............x.' },
+    tip:'スネアの小さな音（ゴーストノート）とシンコペーションしたキックが特徴。16ビートのカッティングを合わせてみてください。' },
+  { id:'disco', name:'ディスコ／4つ打ち', bpm:[110,130], beats:4, sp:4,
+    p:{ hat:'x...x...x...x...', ohat:'..x...x...x...x.', snare:'....X.......X...', kick:'X...X...X...X...' },
+    tip:'キックが4分音符で鳴り続け、裏拍でオープンハイハット。ダンスミュージックの基本形です。' },
+  { id:'shuffle', name:'シャッフル（ブルース）', bpm:[80,130], beats:4, sp:3,
+    p:{ hat:'x.xx.xx.xx.x', snare:'...X.....X..', kick:'X.....x.....' },
+    tip:'1拍を3つに分けた「タッ・タ」のハネるリズム。ブルースやブルースロックで定番。ブルーススケールのフレーズと合わせて。' },
+  { id:'jazz', name:'ジャズ（スウィング）', bpm:[120,220], beats:4, sp:3,
+    p:{ ride:'X..x.xX..x.x', phat:'...x.....x..', kick:'g..g..g..g..', snare:'.........g..' },
+    tip:'ライドシンバルの「チン・チキ・チン・チキ」と、2・4拍目のハイハット（足）。速いテンポでもライドのハネを保つのがポイント。' },
+  { id:'ballad', name:'バラード', bpm:[60,80], beats:4, sp:4,
+    p:{ hat:'x.x.x.x.x.x.x.x.', rim:'....x.......x...', kick:'X.....x.x.......' },
+    tip:'ゆっくりした8ビート。スネアの代わりにリム（クロススティック）を使って、静かに支えます。' },
+  { id:'reggae', name:'レゲエ（ワンドロップ）', bpm:[70,90], beats:4, sp:4,
+    p:{ hat:'x.x.x.x.x.x.x.x.', rim:'........X.......', kick:'........X.......' },
+    tip:'3拍目だけにキックとリムが重なる「ワンドロップ」。ギターは裏拍（リズムタブの裏打ち）を短く刻みます。' },
+  { id:'bossa', name:'ボサノバ', bpm:[110,140], beats:4, sp:4,
+    p:{ hat:'x.x.x.x.x.x.x.x.', rim:'x..x..x...x..x..', kick:'x..xx..xx..xx..x' },
+    tip:'キックの「ドン・ドドン」とリムの独特なリズム（パターンにはいくつかの形があり、これはその一例）。' },
+  { id:'metal', name:'メタル（ツーバス）', bpm:[140,200], beats:4, sp:4,
+    p:{ ride:'x...x...x...x...', snare:'....X.......X...', kick:'xxxxxxxxxxxxxxxx' },
+    tip:'キックを16分音符で連打するツーバス。速いピッキングやパワーコードの刻みの練習に。テンポを落としても使えます。' },
+  { id:'twobeat', name:'ツービート（パンク）', bpm:[160,240], beats:4, sp:4,
+    p:{ hat:'x.x.x.x.x.x.x.x.', snare:'..X...X...X...X.', kick:'X...X...X...X...' },
+    tip:'キックとスネアが8分音符で交互に鳴る、速くて勢いのあるビート。ダウンピッキングの8分刻みに。' },
+  { id:'waltz', name:'ワルツ（3/4）', bpm:[90,160], beats:3, sp:4,
+    p:{ hat:'x.x.x.x.x.x.', snare:'....x...x...', kick:'X...........' },
+    tip:'「ズン・チャッ・チャッ」の3拍子。1拍目を強く感じます。' },
+  { id:'six8', name:'6/8 バラード', bpm:[50,80], beats:6, sp:2, unit:8,
+    p:{ hat:'x.x.x.x.x.x.', snare:'......X.....', kick:'X.........x.' },
+    tip:'8分音符6つを「3＋3」で感じる拍子。4つ目の8分音符でスネア。テンポは8分音符ではなく4分音符基準で、1拍＝8分音符2つとして刻んでいます。' }
+];
+
+const DR = { genre:'rock8', drums:true, click:false, vol:0.8, fill:true, count:true, sub:1, beats:4, accent:true,
+  trainer:false, tStep:5, tBars:4, tMax:160, edits:{} };
+try { Object.assign(DR, JSON.parse(localStorage.getItem('fbnote-drums') || '{}')); } catch(e){}
+function saveDR(){ try { localStorage.setItem('fbnote-drums', JSON.stringify(DR)); } catch(e){} }
+
+function genreById(id){ return GENRES.find(g => g.id === id) || GENRES[0]; }
+function genrePattern(g){
+  const ed = DR.edits[g.id];
+  const out = {}; INST.forEach(([k]) => out[k] = (ed && ed[k]) || g.p[k] || '.'.repeat(g.beats * g.sp));
+  return out;
+}
+const VEL = { X:1, x:0.75, g:0.32 };
+
+// ===== 再生エンジン =====
+const DP = { on:false, mode:'drum', timer:null, raf:null, next:0, step:0, bar:0, vis:[], startBpm:0 };
+function dStepsPerBar(){ if (DP.mode === 'metro') return DR.beats * DR.sub; const g = genreById(DR.genre); return g.beats * g.sp; }
+function dStepDur(){
+  if (DP.mode === 'metro') return 60 / state.tempo / DR.sub;
+  const g = genreById(DR.genre);
+  return g.unit === 8 ? 60 / state.tempo / (2 * g.sp) : 60 / state.tempo / g.sp;
+}
+function dStart(mode){
+  ensureAudio();
+  if (DP.on) dStop();
+  DP.on = true; DP.mode = mode; DP.step = 0; DP.bar = DR.count ? -1 : 0; DP.vis = []; DP.startBpm = state.tempo;
+  DP.next = audio.ctx.currentTime + 0.1;
+  DP.timer = setInterval(dTick, 20);
+  const frame = () => { if (!DP.on) return; const now = audio.ctx.currentTime;
+    while (DP.vis.length && DP.vis[0].at <= now) DP.vis.shift().fn(); DP.raf = requestAnimationFrame(frame); };
+  DP.raf = requestAnimationFrame(frame);
+  dSync();
+}
+function dStop(){
+  DP.on = false; clearInterval(DP.timer); cancelAnimationFrame(DP.raf); DP.vis = [];
+  document.querySelectorAll('.dcol.now,.mbeat.now').forEach(n => n.classList.remove('now'));
+  dSync();
+}
+function dTick(){
+  const now = audio.ctx.currentTime;
+  while (DP.next < now + 0.12) {
+    const t = DP.next, s = DP.step, spb = dStepsPerBar(), bar = DP.bar;
+    if (bar < 0) { // カウントイン
+      const sub = DP.mode === 'metro' ? DR.sub : genreById(DR.genre).sp;
+      if (s % sub === 0) KIT.click(t, s === 0 ? 1 : 0.7);
+    } else if (DP.mode === 'metro') {
+      const beat = Math.floor(s / DR.sub), onBeat = s % DR.sub === 0;
+      KIT.click(t, onBeat ? (beat === 0 && DR.accent ? 1 : 0.7) : 0.4);
+    } else {
+      const g = genreById(DR.genre), pat = genrePattern(g);
+      const isFill = DR.fill && (bar % 4 === 3) && s >= spb - g.sp;
+      if (DR.drums) INST.forEach(([k]) => {
+        const c = pat[k][s];
+        if (isFill && (k === 'snare' || k === 'tom' || k === 'hat' || k === 'ride' || k === 'ohat')) return;
+        if (c && c !== '.') KIT[k](t, VEL[c] || 0.75);
+      });
+      if (DR.drums && isFill) { const k = s - (spb - g.sp); (k % 2 ? KIT.tom : KIT.snare)(t, 0.85); }
+      if (DR.drums && bar > 0 && bar % 4 === 0 && s === 0 && DR.fill) KIT.crash(t, 0.8);
+      if (DR.click && s % g.sp === 0) KIT.click(t, s === 0 ? 1 : 0.7);
+    }
+    const vs = s, vb = bar;
+    DP.vis.push({ at: t, fn: () => dVisual(vs, vb) });
+    DP.next += dStepDur();
+    DP.step++;
+    if (DP.step >= spb) {
+      DP.step = 0; DP.bar++;
+      if (DR.trainer && DP.bar > 0 && DP.bar % DR.tBars === 0 && state.tempo < DR.tMax) {
+        const nb = Math.min(DR.tMax, state.tempo + DR.tStep);
+        DP.vis.push({ at: DP.next, fn: () => setBPM(nb, null) });
+        state.tempo = nb; // 次の拍から反映
+      }
+    }
+  }
+}
+function dVisual(s, bar){
+  document.querySelectorAll('.dcol.now,.mbeat.now').forEach(n => n.classList.remove('now'));
+  const c = document.querySelector(`.dcol[data-s="${s}"]`); if (c && DP.mode === 'drum') c.classList.add('now');
+  const sub = DP.mode === 'metro' ? DR.sub : genreById(DR.genre).sp;
+  const b = document.querySelector(`.mbeat[data-b="${Math.floor(s / sub)}"]`); if (b) b.classList.add('now');
+  const st = document.getElementById('dstat'); if (st) st.textContent = bar < 0 ? 'カウント中…' : `${bar + 1}小節目`;
+  const mini = document.getElementById('dminibar'); if (mini) mini.textContent = bar < 0 ? 'カウント' : `${bar + 1}小節`;
+}
+function dSync(){
+  document.querySelectorAll('[data-dplay]').forEach(b => { const on = DP.on && DP.mode === b.dataset.dplay; b.dataset.on = on ? '1' : '0'; b.textContent = on ? '■ 停止' : b.dataset.label; });
+  const mini = document.getElementById('dmini');
+  if (mini) mini.hidden = !(DP.on && state.tab !== 'metro');
+  const mm = document.getElementById('dminimode'); if (mm) mm.textContent = DP.mode === 'metro' ? 'メトロノーム' : genreById(DR.genre).name;
+}
+
+// ===== 画面 =====
+function renderMetro(){
+  const p = $('#panel-metro'); if (!p) return;
+  p.innerHTML = '';
+  const g = genreById(DR.genre), pat = genrePattern(g), spb = g.beats * g.sp;
+  // メトロノーム
+  const mc = document.createElement('article'); mc.className = 'card';
+  mc.innerHTML = `<div class="eyebrow">メトロノーム</div>
+    <div class="metrohead"><div class="bigbpm"><span class="bpmtxt">${state.tempo}</span><small>BPM（♩＝4分音符）</small></div>
+      <div class="mbeats">${Array.from({length:DR.beats}, (_, i) => `<span class="mbeat${i === 0 && DR.accent ? ' acc' : ''}" data-b="${i}"></span>`).join('')}</div></div>
+    ${tempoWidget()}
+    <div class="mrowctl">
+      <label class="ctl"><span>1小節の拍数</span><select id="mbeats">${[1,2,3,4,5,6,7,8,9,12].map(n => `<option ${n === DR.beats ? 'selected' : ''}>${n}</option>`).join('')}</select></label>
+      <div class="ctl"><span>1拍の分け方</span><div class="seg" id="msub">${[[1,'4分'],[2,'8分'],[3,'3連'],[4,'16分']].map(([v,l]) => `<button data-v="${v}" aria-pressed="${DR.sub === v}">${l}</button>`).join('')}</div></div>
+      <label class="check"><input type="checkbox" id="macc" ${DR.accent ? 'checked' : ''}> 1拍目を強く</label>
+      <button class="btn" id="tap">タップでテンポ</button>
+      <button class="btn play" data-dplay="metro" data-label="▶ メトロノーム" data-on="0">▶ メトロノーム</button>
+    </div>
+    <p class="muted small" id="tapinfo">「タップでテンポ」を一定の間隔で4回以上押すと、その速さがBPMになります。</p>`;
+  p.appendChild(mc);
+
+  // スピードトレーナー
+  const tr = document.createElement('article'); tr.className = 'card';
+  tr.innerHTML = `<div class="eyebrow">スピードトレーナー</div><h3>決めた小節ごとに自動でテンポを上げる</h3>
+    <div class="mrowctl">
+      <label class="check"><input type="checkbox" id="tron" ${DR.trainer ? 'checked' : ''}> 使う</label>
+      <label class="ctl"><span>上げる量</span><select id="trstep">${[1,2,3,5,10].map(n => `<option value="${n}" ${n === DR.tStep ? 'selected' : ''}>+${n} BPM</option>`).join('')}</select></label>
+      <label class="ctl"><span>何小節ごと</span><select id="trbars">${[1,2,4,8,16].map(n => `<option value="${n}" ${n === DR.tBars ? 'selected' : ''}>${n}小節</option>`).join('')}</select></label>
+      <label class="ctl"><span>上限</span><input type="number" id="trmax" min="${BPM_MIN}" max="${BPM_MAX}" value="${DR.tMax}" class="tnum2"></label>
+    </div>
+    <p class="muted small">メトロノームとドラムの両方で使えます。止めたあとはテンポが上がったままになるので、必要なら元に戻してください。</p>`;
+  p.appendChild(tr);
+
+  // ドラム
+  const dc = document.createElement('article'); dc.className = 'card';
+  dc.innerHTML = `<div class="eyebrow">ジャンル別ドラム</div>
+    <div class="chipsel" id="dgenre">${GENRES.map(x => `<button data-v="${x.id}" aria-pressed="${x.id === g.id}">${esc(x.name)}</button>`).join('')}</div>
+    <div class="ex-head" style="margin-top:12px"><div><h3>${esc(g.name)} <span class="muted small">（${g.unit === 8 ? '6/8' : g.beats + '/4'}・目安 ${g.bpm[0]}〜${g.bpm[1]} BPM）</span></h3>
+      <p class="small" style="max-width:72ch">${esc(g.tip)}</p></div>
+      <div class="btns"><button class="btn" id="dsetbpm">目安のテンポにする</button><button class="btn play" data-dplay="drum" data-label="▶ ドラム" data-on="0">▶ ドラム</button></div></div>
+    <div class="mrowctl">
+      <label class="check"><input type="checkbox" id="dfill" ${DR.fill ? 'checked' : ''}> 4小節ごとにフィルイン</label>
+      <label class="check"><input type="checkbox" id="dcount" ${DR.count ? 'checked' : ''}> 1小節カウント</label>
+      <label class="check"><input type="checkbox" id="dclick" ${DR.click ? 'checked' : ''}> クリックも鳴らす</label>
+      <div class="range-row small"><span class="muted">音量</span><input type="range" id="dvol" min="0" max="1" step="0.05" value="${DR.vol}" aria-label="ドラムの音量"></div>
+      <span class="muted small" id="dstat"></span>
+    </div>
+    <div class="tab-scroll"><div class="dgrid" style="--steps:${spb}">
+      <div class="dlabel"></div>${Array.from({length:spb}, (_, s) => `<div class="dhead dcol ${s % g.sp === 0 ? 'beat' : ''}" data-s="${s}">${s % g.sp === 0 ? (s / g.sp + 1) : ''}</div>`).join('')}
+      ${INST.filter(([k]) => pat[k].replace(/\./g,'') || ['kick','snare','hat'].includes(k)).map(([k, l]) => `<div class="dlabel">${l}</div>${[...pat[k]].map((c, s) => `<button class="dcell ${c === 'X' ? 'v3' : c === 'x' ? 'v2' : c === 'g' ? 'v1' : ''} ${s % g.sp === 0 ? 'beat' : ''}" data-k="${k}" data-s="${s}" aria-label="${l} ${s+1}"></button>`).join('')}`).join('')}
+    </div></div>
+    <div class="btns" style="margin-top:8px"><span class="muted small">マスをタップで「強→普通→小さく→なし」と切り替えて、自分用のパターンを作れます。</span><button class="btn small" id="dreset">このジャンルを元に戻す</button></div>
+    <p class="callout" style="margin-top:10px">ジャンルのパターンは、それぞれのジャンルでよく使われる形を単純化した一例です。実際の曲ではさまざまなバリエーションがあります。音はブラウザ内で合成した簡易的なドラム音です。</p>`;
+  p.appendChild(dc);
+  // 練習のしかた
+  const tip = document.createElement('article'); tip.className = 'card';
+  tip.innerHTML = `<div class="eyebrow">ドラムと一緒に練習するには</div>
+    <ul class="tips"><li>ドラムやメトロノームは、ほかのタブに移っても鳴り続けます。画面下のミニプレーヤーから止められます。</li>
+    <li>スケールやフレーズのTAB再生とは別に動いているため、拍の頭はそろいません。ドラムを鳴らしながら、TABを見て自分で弾くのがおすすめです。</li>
+    <li>コードタブの進行や、リズムタブのストロークパターンを、ドラムに合わせて弾いてみましょう。</li>
+    <li>速いテンポ（200BPM以上）は、まず半分のテンポで「2拍を1拍」と感じて弾くと合わせやすくなります。</li></ul>`;
+  p.appendChild(tip);
+
+  // イベント
+  mc.querySelector('#mbeats').addEventListener('change', e => { DR.beats = +e.target.value; saveDR(); renderMetro(); });
+  mc.querySelectorAll('#msub button').forEach(b => b.addEventListener('click', () => { DR.sub = +b.dataset.v; saveDR(); mc.querySelectorAll('#msub button').forEach(x => x.setAttribute('aria-pressed', x === b)); if (DP.on && DP.mode === 'metro') { DP.step = 0; } }));
+  mc.querySelector('#macc').addEventListener('change', e => { DR.accent = e.target.checked; saveDR(); renderMetro(); });
+  const taps = [];
+  mc.querySelector('#tap').addEventListener('click', () => {
+    const now = performance.now(); if (taps.length && now - taps[taps.length-1] > 2000) taps.length = 0;
+    taps.push(now); if (taps.length > 8) taps.shift();
+    if (taps.length >= 4) { const iv = (taps[taps.length-1] - taps[0]) / (taps.length - 1); setBPM(60000 / iv, null); $('#tapinfo').textContent = `タップから計算：${state.tempo} BPM（${taps.length}回の平均）`; }
+    else $('#tapinfo').textContent = `あと${4 - taps.length}回タップしてください`;
+  });
+  tr.querySelector('#tron').addEventListener('change', e => { DR.trainer = e.target.checked; saveDR(); });
+  tr.querySelector('#trstep').addEventListener('change', e => { DR.tStep = +e.target.value; saveDR(); });
+  tr.querySelector('#trbars').addEventListener('change', e => { DR.tBars = +e.target.value; saveDR(); });
+  tr.querySelector('#trmax').addEventListener('change', e => { DR.tMax = Math.max(BPM_MIN, Math.min(BPM_MAX, +e.target.value || 160)); e.target.value = DR.tMax; saveDR(); });
+  dc.querySelectorAll('#dgenre button').forEach(b => b.addEventListener('click', () => { DR.genre = b.dataset.v; saveDR(); const was = DP.on && DP.mode === 'drum'; renderMetro(); if (was) { DP.step = 0; } }));
+  dc.querySelector('#dsetbpm').addEventListener('click', () => setBPM(Math.round((g.bpm[0] + g.bpm[1]) / 2), null));
+  dc.querySelector('#dfill').addEventListener('change', e => { DR.fill = e.target.checked; saveDR(); });
+  dc.querySelector('#dcount').addEventListener('change', e => { DR.count = e.target.checked; saveDR(); });
+  dc.querySelector('#dclick').addEventListener('change', e => { DR.click = e.target.checked; saveDR(); });
+  dc.querySelector('#dvol').addEventListener('input', e => { DR.vol = +e.target.value; if (drumBus) drumBus.gain.value = DR.vol; saveDR(); });
+  dc.querySelectorAll('.dcell').forEach(c => c.addEventListener('click', () => {
+    const k = c.dataset.k, s = +c.dataset.s, cur = genrePattern(g)[k];
+    const nx = { '.':'X', X:'x', x:'g', g:'.' }[cur[s]] || 'X';
+    const ed = DR.edits[g.id] || (DR.edits[g.id] = {});
+    ed[k] = cur.slice(0, s) + nx + cur.slice(s + 1); saveDR();
+    c.className = `dcell ${nx === 'X' ? 'v3' : nx === 'x' ? 'v2' : nx === 'g' ? 'v1' : ''} ${s % g.sp === 0 ? 'beat' : ''}`;
+    if (nx !== '.') { ensureAudio(); KIT[k](audio.ctx.currentTime + 0.01, VEL[nx]); }
+  }));
+  dc.querySelector('#dreset').addEventListener('click', () => { delete DR.edits[g.id]; saveDR(); renderMetro(); });
+  p.querySelectorAll('[data-dplay]').forEach(b => b.addEventListener('click', () => {
+    if (DP.on && DP.mode === b.dataset.dplay) dStop(); else dStart(b.dataset.dplay);
+  }));
+  dSync();
+}
 // ===== CAGED（画面） =====
 let cagedMark;
 
@@ -3093,7 +3433,9 @@ function renderCaged(){
   fillCagedFigs(p, placements);
 }
 
-setupControls(); syncSeg(); syncTabs(); update(); renderQuiz(); renderRhythm(); renderEar(); renderMenu();
+RH.bpm = state.tempo; $('#toptempo').innerHTML = tempoWidget(); renderMetro();
+setupControls(); syncSeg(); syncTabs(); update(); renderQuiz(); renderRhythm(); renderEar(); renderMenu(); setBPM(state.tempo, null);
+$('#dministop').addEventListener('click', () => dStop());
 </script>
 
 </body>
